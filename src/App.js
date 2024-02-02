@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import TextEditor from "./components/TextEditor";
+import { MdDarkMode } from "react-icons/md";
+
 function App() {
   const [html, setHtml] = useState("");
   const [css, setCss] = useState("");
@@ -8,8 +10,12 @@ function App() {
   const [php, setPhp] = useState("");
   const [files, setFiles] = useState(["html", "css"]);
   const [iframeSrc, setIframeSrc] = useState("");
+  const [dark,setDark] = useState(true)
   const options = ["html", "css", "javascript", "php"];
-  const btn = "font-bold text-white cursor-pointer mx-1 w-[120px] m-2 bg-purple-700 rounded-lg text-center"
+  const btn =
+    "font-bold text-white cursor-pointer mx-1 w-[120px] my-auto py-1 bg-purple-700 rounded-lg text-center";
+  const darkMode = " text-black bg-white absolute right-[5px] top-[5px] h-[30px] w-[30px] rounded-full "
+  const lightMode = " bg-black text-white absolute right-[5px] top-[5px] h-[30px] w-[30px] rounded-full "
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIframeSrc(`<html><body>
@@ -28,22 +34,22 @@ function App() {
   }
   return (
     <div className="w-full min-h-100vh bg-black">
-      <header className="flex mx-3">
+      <header className="flex h-[40px] w-full bg-zinc-900">
         {options.map((k) =>
           !files.includes(k) ? (
-            <div
-              key={k}
-              onClick={() => handleFileAdd(k)}
-              className={btn}
-            >
+            <div key={k} onClick={() => handleFileAdd(k)} className={btn}>
               +add {k}
             </div>
           ) : (
             ""
           )
         )}
+
+        <div className="">
+          <MdDarkMode onClick={()=>setDark(!dark)} className={ dark?darkMode:lightMode} />
+        </div>
       </header>
-      <div className="flex overflow-auto ">
+      <div className="flex overflow-auto b">
         {files.map((file) => (
           <TextEditor
             key={file}
@@ -58,13 +64,14 @@ function App() {
             setPhp={setPhp}
             setFiles={setFiles}
             files={files}
+            dark={dark}
           />
         ))}
       </div>
 
       <iframe
         srcDoc={iframeSrc}
-        className="overflow-y-auto h-[330px] w-full bg-white"
+        className="overflow-y-auto h-[329px] w-full bg-white"
         title="HTMLRENDER"
       ></iframe>
     </div>

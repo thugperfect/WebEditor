@@ -2,10 +2,9 @@ import React, { useEffect, useState } from "react";
 import { FaExpandAlt } from "react-icons/fa";
 import Editor from "@monaco-editor/react";
 import { BsArrowsCollapseVertical } from "react-icons/bs";
-import { MdDelete } from "react-icons/md";
 import { IoCloseCircle } from "react-icons/io5";
 const TextEditor = (props) => {
-  const { file, setHtml, setCss, setJs, setPhp,setFiles ,files,html,css,js,php} = props;
+  const { file, setHtml, setCss, setJs, setPhp,setFiles ,files,html,css,js,php,dark} = props;
   const [expand, handleExpand] = useState(true);
   const [parentValue,setParentValue] = useState()
   useEffect(()=>{
@@ -25,7 +24,7 @@ const TextEditor = (props) => {
         default:
           console.log("invalidFile");
       }
-  })
+  },[])
   function setData(file, e) {
     switch (file) {
       case "html":
@@ -50,8 +49,8 @@ const TextEditor = (props) => {
   }
   
   return (
-    <div className={` ${expand ? "flexy" : "coll"}`}>
-      <div className="px-3 font-bold flex justify-between ">
+    <div className={`all ${expand ? "flexy" : "coll"}`}>
+      <div className="px-2 font-bold flex justify-between ">
         <div className="text-white">{file}</div>
         <div className="flex">
           <div onClick={() => handleExpand(!expand)}>
@@ -70,7 +69,7 @@ const TextEditor = (props) => {
       </div>
       <Editor
         height={"360px"}
-        theme="vs-dark"
+        theme={dark?"vs-dark":""}
         className="w-full"
         defaultLanguage={file}
         onChange={(e) => setData(file, e)}

@@ -1,12 +1,18 @@
-
+.all{
+    transition: flex 0.5s;
+    
+}
   .coll {
-    width: 100px;
+    width: 130px;
     flex-shrink: 0;
   }
   .flexy{
     width: 300px;
     flex-grow: 1;
     flex-basis: 0;
+  }
+  .b{
+    border-bottom: 1px solid rgb(168, 168, 168)
   }
   @tailwind base;
   @tailwind components;
