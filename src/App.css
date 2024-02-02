@@ -1,9 +1,10 @@
 
   .coll {
     width: 100px;
+    flex-shrink: 0;
   }
   .flexy{
-    width: 500px;
+    width: 300px;
     flex-grow: 1;
     flex-basis: 0;
   }
