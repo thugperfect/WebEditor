@@ -1,11 +1,12 @@
 # WebEditor
 
+![ImageToolKit Logo](./image.png)
 
 ## Description
 
 This web-based code editor is built using React and Tailwind CSS, providing a responsive and visually appealing user interface. The editor facilitates the addition and deletion of HTML, CSS, JavaScript, and PHP files. Each file can be closed or minimized, allowing users to manage their projects efficiently. The application renders HTML, CSS, JavaScript, and PHP on the client side, ensuring a fast and responsive experience. The editor is particularly useful for practicing coding exercises.
 
-## live deploy - https://webeditor.onrender.com/
+### live deploy - https://webeditor.onrender.com/
 
 ## Features
 
