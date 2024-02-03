@@ -7,11 +7,10 @@ function App() {
   const [html, setHtml] = useState("");
   const [css, setCss] = useState("");
   const [js, setJs] = useState("");
-  const [php, setPhp] = useState("");
   const [files, setFiles] = useState(["html", "css"]);
   const [iframeSrc, setIframeSrc] = useState("");
   const [dark,setDark] = useState(true)
-  const options = ["html", "css", "javascript", "php"];
+  const options = ["html", "css", "javascript"];
   const btn =
     "font-bold text-white cursor-pointer mx-1 w-[120px] my-auto py-1 bg-purple-700 rounded-lg text-center";
   const darkMode = " text-black bg-white absolute right-[5px] top-[5px] h-[30px] w-[30px] rounded-full "
@@ -21,14 +20,14 @@ function App() {
       setIframeSrc(`<html><body>
       <style>${css}</style>
       ${html}
-      <?php 
-      ${php} 
-      ?>
+      
       <script>${js}</script>
-      </body></html>`);
+      </body>
+      
+      </html>`);
     }, 1000);
     return () => clearTimeout(timeout);
-  }, [html, css, js, php]);
+  }, [html, css, js]);
   function handleFileAdd(k) {
     setFiles([...files, k]);
   }
@@ -60,8 +59,6 @@ function App() {
             setCss={setCss}
             js={js}
             setJs={setJs}
-            php={php}
-            setPhp={setPhp}
             setFiles={setFiles}
             files={files}
             dark={dark}
@@ -71,7 +68,7 @@ function App() {
 
       <iframe
         srcDoc={iframeSrc}
-        className="overflow-y-auto h-[329px] w-full bg-white"
+        className="overflow-y-auto h-[450px] w-full bg-white"
         title="HTMLRENDER"
       ></iframe>
     </div>

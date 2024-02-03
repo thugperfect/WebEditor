@@ -18,9 +18,6 @@ const TextEditor = (props) => {
         case "javascript":
             setParentValue(js);
           break;
-        case "php":
-            setParentValue(php);
-          break;
         default:
           console.log("invalidFile");
       }
@@ -35,9 +32,6 @@ const TextEditor = (props) => {
         break;
       case "javascript":
         setJs(e);
-        break;
-      case "php":
-        setPhp(e);
         break;
       default:
         console.log("invalidFile");
@@ -67,14 +61,22 @@ const TextEditor = (props) => {
           </div>
         </div>
       </div>
-      <Editor
-        height={"360px"}
-        theme={dark?"vs-dark":""}
-        className="w-full"
-        defaultLanguage={file}
-        onChange={(e) => setData(file, e)}
-        value={parentValue}
-      />
+
+      
+        try {
+          (<Editor
+          height={"360px"}
+          theme={dark?"vs-dark":""}
+          className="w-full"
+          defaultLanguage={file}
+          onChange={(e) => setData(file, e)}
+          value={parentValue}
+        />)
+        } catch () {
+         
+        }
+      
+      
     </div>
   );
 };
